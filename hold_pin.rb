@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-device = "/dev/ttyACM0"
+device = "/dev/ttyGPIO"
 pin = ARGV[0]
 sleep_time = ARGV[1].to_i
 
