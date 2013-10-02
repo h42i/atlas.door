@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
 
-./hold_pin.rb B1 3
+./hold_pin.rb B1 3 &
