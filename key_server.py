@@ -1,31 +1,25 @@
-#!/usr/bin/env python2
-
 import socket
+import os
+import sys
 
-HOST = '127.0.0.1' # Symbolic name meaning the local host
-PORT = 9337 # Arbitrary non-privileged port
+HOST = ''                 # Symbolic name meaning all available interfaces
+PORT = 9337               # Arbitrary non-privileged port
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.bind((HOST, PORT))
-s.listen(3)
+s.listen(1)
 
-conn, addr = s.accept()
+while 1:
+    conn, addr = s.accept()
+    print('client connected')
+    data = conn.recv(1024)
+    if not data:
+        print('data broken')
+        break
+    file = open("keystore", "a")
+    file.write(data)
+    file.close()
+    print('data written to keystore')
 
-while True:
-	conn, addr = s.accept()
-	
-	print("accepted client.")
-	
-	data = conn.recv(2**14)
-	
-	if not data:
-		break
-	
-	print("wrote public key to keystore.")
-	
-	file = open("keystore", "w")
-	file.write(data)
-	file.close()
-	
-	conn.close()
+conn.close()
 
