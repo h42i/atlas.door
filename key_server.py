@@ -12,14 +12,14 @@ s.listen(1)
 while 1:
     conn, addr = s.accept()
     print('client connected')
-    data = conn.recv(1024)
+    data = conn.recv(1024 * 16)
     if not data:
         print('data broken')
         continue
     file = open("key_store", "a")
     file.write(data)
     file.close()
-    print('data written to keystore')
+    print('data written to key_store')
 
 conn.close()
 
