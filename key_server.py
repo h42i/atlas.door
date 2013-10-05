@@ -15,8 +15,8 @@ while 1:
     data = conn.recv(1024)
     if not data:
         print('data broken')
-        break
-    file = open("keystore", "a")
+        continue
+    file = open("key_store", "a")
     file.write(data)
     file.close()
     print('data written to keystore')
