@@ -3,6 +3,7 @@
 import socket
 import os
 import sys
+import errno
 
 HOST = ''                 # Symbolic name meaning all available interfaces
 PORT = 9337               # Arbitrary non-privileged port
