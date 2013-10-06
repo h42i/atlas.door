@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import socket
 import os
 import sys
@@ -12,13 +14,22 @@ s.listen(1)
 while 1:
     conn, addr = s.accept()
     print('client connected')
-    data = conn.recv(1024 * 16)
-    if not data:
-        print('data broken')
-        continue
+    
+    data = ""
+    receiving_data = True
+    
+    while receiving_data:
+        try:
+            data += conn.recv(1024 * 16)
+            errno.EWOULDBLOCK
+        except socket.error, e:
+            receiving_data = False
+            break
+    
     file = open("key_store", "a")
     file.write(data)
     file.close()
+    
     print('data written to key_store')
 
 conn.close()
