@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
 
-./hold_pin.rb B0 $1 &
+/home/hasi/atlas.door/hold_pin.rb B0 $1 &
