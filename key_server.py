@@ -17,15 +17,14 @@ while 1:
     print('client connected')
     
     data = ""
-    receiving_data = True
     
-    while receiving_data:
-        try:
-            data += conn.recv(1024 * 16)
-            errno.EWOULDBLOCK
-        except socket.error, e:
-            receiving_data = False
+    while True:
+        tmp_data = conn.recv(1024)
+        
+        if not tmp_data:
             break
+        
+        data += tmp_data
     
     file = open("key_store", "a")
     file.write(data)
