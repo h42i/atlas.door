@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
 
-ruby server.rb -p 4337 -e production &
+ruby /home/hasi/atlas.door/server.rb -p 4337 -e production &
